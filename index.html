@@ -3,38 +3,28 @@
 <html lang="en-us">
 
   <head>
-
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>Legends of Trivia</title>
-
-    <!-- CSS Reset Sheet -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
-
-    <!-- Out Own CSS Sheet -->
-    <link rel="stylesheet" href="assets/css/style.css">
-
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Geo" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/trivia.js"></script>
   </head>
 
   <body>
-
-    <div id="wrapper">
-      <h1>Totally Trivial Trivia!</h1>
-      <div id="sub-wrapper">
-        <div id="quiz-area">
-          <button id="start">Start</button>
+    <div class="container mx-auto text-center my-5 border">
+      <h1>Legends of Trivia</h1>
+      <h3 id="qNum"></h3>
+      <div class="container my-5">
+        <p id="timer"></p>
+          <button id="begin">Start</button>
+        <div id="question">
         </div>
+        <div id="answers">
+        </div>
+        <div id="status"></div>
       </div>
     </div>
-
-    <!-- Script -->
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
-
   </body>
 
 </html>
