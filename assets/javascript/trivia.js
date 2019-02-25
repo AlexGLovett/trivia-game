@@ -59,6 +59,10 @@ var questions = [
 ];
 
 $(document).on("click","#begin",function(){
+    right = 0;
+    wrong = 0;
+    missed = 0;
+    $("#question").children().remove();
     $("#begin").remove();
     gameStart();
 });
@@ -77,7 +81,6 @@ function proceedToQuestion(number){
     $("#timer").text(counter + "s Remaining");
     if(number <= 9){
         timer = setInterval(decrement,1000);
-        questionNumber++;
         var question = {};
         Object.assign(question,questions[number]);
         console.log(question);
@@ -113,14 +116,49 @@ function timeout(){
     proceedToQuestion(questionNumber);
 };
 
-function correct(){
+$(document).on("click",'input[name="answer-button"]',function(){
+    evaluate(this["value"]);
+});
 
+function evaluate(answer){
+    
+    var rightAnswer = questions[questionNumber].correctAnswer;
+    if (answer == rightAnswer){
+        questionNumber++;
+        correct();
+    }
+    else{
+        questionNumber++;
+        incorrect();
+    }
+    
+};
+
+function correct(){
+    right++;
+    clearInterval(timer);
+    updateStatus();
+    $("#question").children().remove();
+    $("#answers").children().remove();
+    console.log("Correct!");
+    proceedToQuestion(questionNumber);
 };
 
 function incorrect(){
-
+    wrong++;
+    clearInterval(timer);
+    updateStatus();
+    $("#question").children().remove();
+    $("#answers").children().remove();
+    console.log("Incorrect!");
+    proceedToQuestion(questionNumber);
 };
 
 function proceedToEnd(){
-
+    questionNumber = 0;
+    $("#status").text("");
+    $("#timer").text("");
+    var score = $("<h4>").text("You Scored " + right + "0%!").appendTo("#question");
+    var tryAgain = $("<h6>").text("Try Again?").appendTo("#question");
+    var tryButton = $('<button id="begin">Start</button>').appendTo("#question");
 };
